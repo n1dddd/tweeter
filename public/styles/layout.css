@@ -15,11 +15,26 @@ html {
  */
 
 body {
+  display:flex;
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
+  font-family: 'Source Sans Pro';
+  align-items: center;
+  flex-direction: column;
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+.container{
+  display:flex;
+  width: 90%;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f4f1ec;
+  flex-direction: column;
+}
+
+ 
