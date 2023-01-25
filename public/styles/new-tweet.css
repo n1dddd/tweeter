@@ -1,0 +1,35 @@
+.new-tweet {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  font-family: sans-serif;
+}
+
+#tweet-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#tweet-text {
+  border:hidden;
+  border-bottom: 5px solid #545149;
+  margin-bottom: 10px;
+  background-color: #f4f1ec;
+}
+
+#new-tweet-footer {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: 'Bungee';
+}
+
+#submit {
+  background-color: #162966;
+  color: white;
+  border-style: groove;
+  font-weight: bolder;
+}
+.invalidator {
+  color: red;
+}
