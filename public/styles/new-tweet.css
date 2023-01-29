@@ -11,25 +11,26 @@
 }
 
 #tweet-text {
-  border:hidden;
+  border: hidden;
   border-bottom: 5px solid #545149;
   margin-bottom: 10px;
   background-color: #f4f1ec;
 }
 
 #new-tweet-footer {
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   font-family: 'Bungee';
 }
 
-#submit {
+#tweet-submit {
   background-color: #162966;
   color: white;
   border-style: groove;
   font-weight: bolder;
 }
+
 .invalidator {
   color: red;
 }
