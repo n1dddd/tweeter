@@ -5,30 +5,6 @@
  */
 
 
-// const data = [
-//   {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": "https://i.imgur.com/73hZDYK.png"
-//       ,
-//       "handle": "@SirIsaac"
-//     },
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1461116232227
-//   },
-//   {
-//     "user": {
-//       "name": "Descartes",
-//       "avatars": "https://i.imgur.com/nlhLi3I.png",
-//       "handle": "@rd" },
-//     "content": {
-//       "text": "Je pense , donc je suis"
-//     },
-//     "created_at": 1461113959088
-//   }
-// ]
 
 $(document).ready(function () {
 
@@ -42,8 +18,9 @@ $(document).ready(function () {
     else if (tweetLength === 0) {
       window.alert("Please input some text")
     }
-    else{
+    else {
       postTweetData();
+      loadTweets();
     }
   })
 
@@ -57,6 +34,7 @@ $(document).ready(function () {
       }
     })
   }
+
   loadTweets();
 
   const createTweetElement = function (tweet) {
@@ -72,10 +50,11 @@ $(document).ready(function () {
       </div>
       </section>
       <div class="user-tweet-text">
-        <span>${tweet.content.text}</span>
+        <span>${escape(tweet.content.text)}</span>
       </div>
       <span>
-        <hr class="line-break"></span>
+        <hr class="line-break">
+        </span>
       <footer class="user-tweet-footer">
         <div class="date">
           <span>${timeago.format(tweet.created_at)}</span>
@@ -90,12 +69,18 @@ $(document).ready(function () {
     return $tweet;
   }
 
+  const escape = function (string) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(string));
+    return div.innerHTML;
+  }
 
   const renderTweets = function (tweets) {
+    $('#tweet-container').empty();
     for (let tweet of tweets) {
       console.log(tweet);
       const $tweet = createTweetElement(tweet);
-      $('#tweets-container').append($tweet);
+      $('#tweets-container').prepend($tweet);
     }
   }
   const postTweetData = () => {
@@ -103,10 +88,7 @@ $(document).ready(function () {
       url: "/tweets/",
       type: "POST",
       data: $('#tweet-form').serialize(),
-      dataType: "json",
-      success: (data) => {
-        console.log(data);
-      }
+      dataType: "json"
     })
   }
 
