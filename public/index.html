@@ -58,6 +58,16 @@
   <!-- Page-specific (main) content here -->
   <main class="container">
     <section class="new-tweet">
+      <span id="error-empty" class="error-box">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        Please enter some text into the text box!
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </span>
+      <span id="error-too-long" class="error-box">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        Please ensure the character count is less than 140!
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </span>
       <h2 class="new-tweet-header"> Compose Tweet</h2>
       <form id="tweet-form" action="/tweets/" method="POST">
         <label for="tweet-text">What are you humming about?</label>
