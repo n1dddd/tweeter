@@ -8,15 +8,22 @@
 
 $(document).ready(function () {
 
+  $('#error-empty').hide();
+  $('#error-too-long').hide();
+
   $('#tweet-form').submit(function (e) {
     e.preventDefault();
     const maxChars = 140;
     const tweetLength = $(this).find('#tweet-text').val().length;
+
+    $('#error-too-long').slideUp('slow');
+    $('#error-empty').slideUp('slow');
+
     if (tweetLength > maxChars) {
-      window.alert("Please lower your character count")
+      $('#error-too-long').slideDown('slow');
     }
     else if (tweetLength === 0) {
-      window.alert("Please input some text")
+      $('#error-empty').slideDown('slow');
     }
     else {
       postTweetData();
