@@ -9,3 +9,17 @@
   padding-top: 120px;
   background-color: rgb(94, 94, 94);
 }
+
+@media only screen and (min-width: 1024px) {
+  .profile-img {
+    max-width: 150px;
+    max-height: 150px;
+  }
+  .profile-header {
+    margin-top: 250px;
+    max-width: 500px;
+    max-height: 500px;
+    margin-left: 150px;
+    margin-right: 100px;
+  }
+}
