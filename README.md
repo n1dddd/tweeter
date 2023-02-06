@@ -21,10 +21,11 @@ This repository is the starter code for the project: Students will fork and clon
 
 !["Tweeter-homepage"](https://raw.githubusercontent.com/n1dddd/tweeter/master/docs/tweeter-homepage.png)
 
-!["Tweeter-word-count](https://raw.githubusercontent.com/n1dddd/tweeter/master/docs/tweeter-word-count.png)
+!["Tweeter-word-count"](https://raw.githubusercontent.com/n1dddd/tweeter/master/docs/tweeter-word-count.png)
 
-!["Tweeter-word-count-red](https://raw.githubusercontent.com/n1dddd/tweeter/master/docs/tweeter-word-count-red.png)
+!["Tweeter-word-count-red"](https://raw.githubusercontent.com/n1dddd/tweeter/master/docs/tweeter-word-count-red.png)
 
-!["Tweeter-dynamic-screen-display] (https://raw.githubusercontent.com/n1dddd/tweeter/master/docs/tweeter-dynamic-screen-display.png)
+!["Tweeter-dynamic-screen-display"](https://raw.githubusercontent.com/n1dddd/tweeter/master/docs/tweeter-dynamic-screen-display.png)
 
-!["Tweeter-dyanmic-error](https://raw.githubusercontent.com/n1dddd/tweeter/master/docs/tweeter-error.png)
+!["Tweeter-dyanmic-error"](https://raw.githubusercontent.com/n1dddd/tweeter/master/docs/tweeter-error.png)
+
