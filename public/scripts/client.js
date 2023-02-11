@@ -6,12 +6,12 @@
 
 
 
-$(document).ready(function () {
+$(document).ready(function () { //ensures that the scripts load together fully
 
-  $('#error-empty').hide();
+  $('#error-empty').hide(); //hide error messages until prompted to show
   $('#error-too-long').hide();
 
-  $('#tweet-form').submit(function (e) {
+  $('#tweet-form').submit(function (e) { //jquery function to post user tweet on submit event
     e.preventDefault();
     const maxChars = 140;
     const tweetLength = $(this).find('#tweet-text').val().length;
@@ -26,35 +26,54 @@ $(document).ready(function () {
       $('#error-empty').slideDown('slow');
     }
     else {
-      postTweetData();
-      loadTweets();
+      const userTweet = $(this).serialize();
+      $.post('/tweets/', userTweet, () => { //POST tweet-form data to database, then render database directly after
+        loadTweets();
+      })
+      this.reset();
+      $(this).find('.counter').val(maxChars); //navigate to parent, find child .counter, and replace with maxChars variable to reset word count
     }
   })
 
-  const loadTweets = () => {
+  const loadTweets = () => { //AJAX function to load (GET), then render tweets from database
     $.ajax({
       url: "/tweets/",
       type: "GET",
       dataType: "json",
       success: (data) => {
         renderTweets(data);
+      },
+      error: (error) => {
+        console.log(`GET request failed, here is your error: ${error}`)
       }
     })
   }
 
-  loadTweets();
+  const escape = function (string) { //block cross-site scripting by converting unsafe chars to safe chars
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(string));
+    return div.innerHTML;
+  }
 
-  const createTweetElement = function (tweet) {
+  const renderTweets = function (tweets) { //jquery function to render each tweet based on set styling from database
+    $('#tweets-container').empty();
+    for (let tweet of tweets) {
+      const $tweet = createTweetElement(tweet);
+      $('#tweets-container').prepend($tweet);
+    }
+  }
+
+  const createTweetElement = function (tweet) { //creates template tweet container
     let $tweet = $(
       `<article class="tweet">
-      <section class="user-profile">
-      <div class="image-name">
+      <section class="tweet-header">
+        <div class="image-and-name">
           <img src="${tweet.user.avatars}">
-          <h3 class="user-name">${tweet.user.name}</h3>
-      </div>
-      <div class="user-handle">
-      <h2>${tweet.user.handle}</h2>
-      </div>
+          <h3>${tweet.user.name}</h3>
+        </div>
+        <div class="only-user-handle">
+          <h2>${tweet.user.handle}</h2>
+        </div>
       </section>
       <div class="user-tweet-text">
         <span>${escape(tweet.content.text)}</span>
@@ -75,30 +94,7 @@ $(document).ready(function () {
     </article>`)
     return $tweet;
   }
-
-  const escape = function (string) {
-    let div = document.createElement("div");
-    div.appendChild(document.createTextNode(string));
-    return div.innerHTML;
-  }
-
-  const renderTweets = function (tweets) {
-    $('#tweet-container').empty();
-    for (let tweet of tweets) {
-      console.log(tweet);
-      const $tweet = createTweetElement(tweet);
-      $('#tweets-container').prepend($tweet);
-    }
-  }
-  const postTweetData = () => {
-    $.ajax({
-      url: "/tweets/",
-      type: "POST",
-      data: $('#tweet-form').serialize(),
-      dataType: "json"
-    })
-  }
-
+  loadTweets();
 })
 
 
