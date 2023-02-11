@@ -1,3 +1,5 @@
+/*This file is strictly for styling the profile image and name*/
+
 .profile-header {
   max-height: 520px;
   background-image: url(../images/brushed-alum.png);
@@ -15,6 +17,7 @@
     max-width: 150px;
     max-height: 150px;
   }
+
   .profile-header {
     margin-top: 250px;
     max-width: 500px;
