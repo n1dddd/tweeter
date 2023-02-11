@@ -1,3 +1,5 @@
+/*This file is strictly for styling the new tweet form*/
+
 .new-tweet {
   display: flex;
   flex-direction: column;
